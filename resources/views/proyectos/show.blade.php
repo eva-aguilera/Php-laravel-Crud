@@ -39,7 +39,7 @@
         
         <div class="d-flex gap-2">
             <a href="{{ route('proyectos.edit', $proyecto->id) }}" class="btn btn-warning">✏️ Editar Proyecto</a>
-            <a href="{{ route('proyectos.index') }}" class="btn btn-secondary">← Volver al Listado</a>
+            <a href="{{ route('proyectos.listado') }}" class="btn btn-secondary">← Volver al Listado</a>
         </div>
     </div>
 

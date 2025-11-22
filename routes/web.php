@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectoController; // ¡ESENCIAL!
 
-// 1. Listar todos los proyectos
-Route::get('/', [ProyectoController::class, 'index'])->name('proyectos.index'); 
+// En routes/web.php
+// ...
+Route::get('/proyectos', [ProyectoController::class, 'index'])
+    ->middleware('jwt.auth') // <-- ¡Debe estar este middleware!
+    ->name('proyectos.listado');
 
 // 2. Mostrar la vista para crear un nuevo proyecto
 Route::get('/proyectos/crear', [ProyectoController::class, 'create'])->name('proyectos.create'); 
@@ -23,3 +26,10 @@ Route::put('/proyectos/{id}', [ProyectoController::class, 'update'])->name('proy
 
 // 7. Eliminar un proyecto por ID (DELETE)
 Route::delete('/proyectos/{id}', [ProyectoController::class, 'destroy'])->name('proyectos.destroy');
+
+Route::get('/login', [ProyectoController::class, 'showLoginForm'])->name('loginBasic');
+Route::post('/login', [ProyectoController::class, 'loginBasic'])->name('login.submit');
+Route::get('/register', [ProyectoController::class, 'showRegisterForm'])->name('register.show');
+Route::post('/register', [ProyectoController::class, 'register'])->name('register.submit'); // <-- ¡ESTA ES LA RUTA CRÍTICA!
+
+Route::get('/logout', [ProyectoController::class, 'logout'])->name('logout');

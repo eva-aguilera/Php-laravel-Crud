@@ -17,8 +17,17 @@ class proyecto extends Model
         'estado',
         'responsable',
         'monto',
+        'created_by'
     ];
     
+    /**
+     * Define la relación: Un Proyecto pertenece a un Usuario (el creador).
+     */
+    public function creador(): BelongsTo
+    {
+        // El proyecto se relaciona con el modelo Usuario a través de la clave 'created_by'
+        return $this->belongsTo(Usuario::class, 'created_by');
+    }
 
     protected $casts = [
         'fecha_inicio' => 'date',
