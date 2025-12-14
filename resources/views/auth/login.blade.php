@@ -23,7 +23,7 @@
             
             <button type="submit">Entrar</button>
         </form>
-        <p style="text-align: center; margin-top: 15px;"><a href="{{ route('register.show') }}">¿Necesitas una cuenta? Regístrate</a></p>
+        <p style="text-align: center; margin-top: 15px;"><a href="{{ route('register') }}">¿Necesitas una cuenta? Regístrate</a></p>
     </div>
 </body>
 </html>
